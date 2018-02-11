@@ -1,27 +1,47 @@
-const baseWord = 'PARTS';
-const guesses = ['TREES', 'TEASE', 'START', 'STRAP', 'LEVEL', 'PARTS'];
-const baseWordLetter = {};
+// const baseWord = 'PARTS';
+// const guesses = ['TREES', 'TEASE', 'START', 'STRAP', 'LEVEL', 'PARTS'];
+const baseWord = 'AABB';
+const guesses = ['ABBB', 'AAAB'];
+
 function count(guesses, baseWord) {
 	for (let i = 0; i < guesses.length; i++) {
-		let samePos = 0;
-		let common = 0;
-		let word = guesses[i];
-		for (let letter of baseWord) {
-			if (!baseWordLetter[letter]) {
-				baseWordLetter[letter] = 0;
-			}
-			baseWordLetter[letter] += 1;
-		}
-		for (let j = 0; j < word.length; j++) { //traverse each char in each word
-			if (word[j] === baseWord[j]) {
-				samePos += 1;
-			}
-			if (baseWordLetter[word[j]] && baseWordLetter[word[j]] != 0) {
-				baseWordLetter[word[j]] -= 1;
-				common += 1;
-			}
-		}
-		console.log(baseWord + ' ' + word + ' ' + samePos + ' ' + common);
+		let baseWordMap = generateLetterMap();
+		let common = countCommon(guesses[i], baseWordMap);
+		let exact = countExact(guesses[i], baseWord);
+		console.log(baseWord + ' ' + guesses[i] + ' ' + exact + ' ' + common);
 	}
 }
+
+function generateLetterMap() {
+	const map = {};
+	for (let letter of baseWord) {
+		if (!map[letter]) {
+			map[letter] = 0;
+		}
+		map[letter] += 1;
+	}
+	return map;
+}
+
+function countCommon(guess, baseWordMap) {
+	let common = 0;
+	for (let i = 0; i < guess.length; i++) {
+		if (baseWordMap[guess[i]] !== undefined && baseWordMap[guess[i]] != 0) {
+			baseWordMap[guess[i]]--;
+			common++;
+		}
+	}
+	return common;
+}
+
+function countExact(guess, baseWord) {
+	let exact = 0;
+	for (let i = 0; i < guess.length; i++) {
+		if (guess[i] === baseWord[i]) {
+			exact++;
+		}
+	}
+	return exact;
+}
+
 count(guesses, baseWord);
