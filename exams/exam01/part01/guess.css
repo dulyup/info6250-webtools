@@ -1,0 +1,64 @@
+body {
+    background-color: #FFFFCC;
+    font-family: "Gill Sans", sans-serif;
+    padding: 20px;
+}
+
+.display-turn {
+    margin-left: 450px;
+    width:500px;
+    height: 20px;
+}
+
+#new-guess {
+    width: 200px;
+    height: 30px;
+}
+
+#add {
+    margin-left: 100px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: ghostwhite;
+    width: 70px;
+}
+
+#add:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.notify {
+    font-size: small;
+    color: grey;
+    width: 100px;
+    vertical-align: center;
+    position: fixed;
+}
+
+.input {
+    margin-left: 450px;
+    margin-top: 20px;
+    width: 800px;
+}
+
+.output {
+    padding-left: 300px;
+}
+
+.output li{
+    padding-left: 60px;
+    list-style-type: none;
+    width: 500px;
+    height: auto;
+    background-color:  #FFCC33;
+    border-bottom: 1px solid #1086e3;
+}
+
+.result {
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight:bold;
+    color: #CC3333;
+}
