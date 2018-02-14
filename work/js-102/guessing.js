@@ -6,6 +6,7 @@ const wordInfo = {
 wordInfo.word = pickWord(wordInfo.allWords);
 wordInfo.magic = thinkAbout(wordInfo) // store any pre-calculations for later
 
+
 const history = {
   results: [],
   count: 0
@@ -55,7 +56,7 @@ function pickGuess( wordInfo, history ) {
   // along with any startup info that was stored in history.info
 
   // EDIT BELOW THIS
-
+	return wordInfo.allWords[history.count - 1];
   // EDIT ABOVE THIS
 }
 
@@ -65,7 +66,29 @@ function compareLetters( guess, wordInfo ) {
   // You may add info in result beyond what is needed if you wish
 
   // EDIT BELOW THIS
-
+	const wordInfoMap = {};
+	let exact = 0;
+	let common = 0;
+	for (let letter of wordInfo.word) {
+		if (!wordInfoMap[letter]) {
+			wordInfoMap[letter] = 0;
+		}
+		wordInfoMap[letter] += 1;
+	}
+	for (let i = 0; i < guess.length; i++) { //traverse each char in each word
+		if (guess[i] === wordInfo.word[i]) {
+			exact += 1;
+		}
+		if (wordInfoMap[guess[i]] && wordInfoMap[guess[i]] != 0) {
+			wordInfoMap[guess[i]] -= 1;
+			common += 1;
+		}
+	}
+	result.similar = common;
+	if (exact === wordInfo.word.length) {
+		result.won = true;
+	} 
+	return result;
   // EDIT ABOVE THIS
 }
 
