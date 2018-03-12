@@ -14,11 +14,20 @@ app.get('/words', (req, res) => {
 });
 
 app.get('/secretWordId', (req, res) => {
-    res.send(JSON.stringify(wordService.secretWordId()));
+    const id = wordService.secretWordId();
+    if (!id) {
+        res.status(400).send('fail to get secret word');
+    } else {
+        res.send(JSON.stringify(id));
+    }
 });
 
 app.get('/secretWordMap', (req, res) => {
-    res.send(JSON.stringify(wordService.wordIdMap));
+    const wordIdMap = wordService.wordIdMap;
+    if (!wordIdMap) {
+        res.status(400).send('fail to get secret word id map');
+    }
+    res.send(JSON.stringify(wordIdMap));
 });
 
 /**

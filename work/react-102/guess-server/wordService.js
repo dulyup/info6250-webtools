@@ -3,15 +3,13 @@ const wordIdMap = [];
 
 //word - id generating service
 function generateWordMap() {
-    let id = generateId(wordList);
-    let word = generateSecretWord(wordList);
     let wordIdPair = {
-        id: id,
-        word: word
+        id: generateId(wordList),
+        word: generateSecretWord(wordList)
     };
     wordIdMap.push(wordIdPair);
     console.log(wordIdMap);
-    return id;
+    return wordIdPair["id"];
 }
 
 //generate a id randomly
@@ -27,9 +25,7 @@ const generateSecretWord = (list) => {
 
 module.exports = {
     allWords: wordList,
-    secretWordId: function(){
-        return generateWordMap();
-    },
+    secretWordId: generateWordMap,
     wordIdMap: wordIdMap
 };
 

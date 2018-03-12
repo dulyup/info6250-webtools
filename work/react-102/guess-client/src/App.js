@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {pickErrorMessage } from './services/message';
 import './App.css';
 
 //Components
@@ -7,8 +8,8 @@ import GameBody from './components/GameBody';
 import GameControl from './components/GameControl';
 
 //logic function
-import {getSecretWordId, checkResult} from './services/word';
-import {checkWordList} from './services/validateInput';
+import {getSecretWordId, checkResult} from './services/service';
+import {checkWordList} from './services/checkWordList';
 
 class App extends Component {
 
@@ -98,7 +99,6 @@ class App extends Component {
 
     resetGame() {
         this.fetchSecretWordId();
-        this.clearError();
         this.setState( {
             modes: ['guess','reset'],
             mode: 'guess',
@@ -110,7 +110,7 @@ class App extends Component {
             result: '',
             isValid: false
         });
-        console.log(this.state.secretWordId);
+        // console.log(this.state.secretWordId);
     }
 
     validateInput() {
@@ -130,9 +130,20 @@ class App extends Component {
         this.setState({
             error: null
         });
+        this.fetchSecretWordId();
     }
 
     render() {
+        let message = pickErrorMessage(this.state.error);
+        if( message ) {
+            message = (
+                <div>
+                    <p>{message}</p>
+                    <button onClick={ () => this.clearError() }>Got it</button>
+                </div>
+            );
+        }
+
         return (
             <div className="app">
                 <GameHeader title="Welcome to Guess Word Game"/>
@@ -146,6 +157,7 @@ class App extends Component {
                     isValid={this.state.isValid}
                 />
                 <GameBody results={this.state.results} />
+                { message }
             </div>
         );
     }
