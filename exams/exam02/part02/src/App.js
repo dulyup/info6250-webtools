@@ -111,7 +111,7 @@ class App extends Component {
                 result: 'Alfred Win!',
                 isValid: true
             });
-            this.handleButton('RESET');
+            this.handleButton('NEW GAME');
             this.clearGameHistory();
         }
 
