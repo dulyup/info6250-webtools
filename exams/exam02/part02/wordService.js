@@ -26,6 +26,11 @@ const generateGuess = () => {
     return wordList[(count++) % wordList.length];
 };
 
+let reverse = wordList.length - 1;
+const generateGuessReverse = () => {
+    return wordList[(reverse--) % wordList.length];
+};
+
 function deleteHistory(id) {
     for (let index = 0; index < wordIdMap.length; index++) {
         if (wordIdMap[index].id === parseInt(id)) {
@@ -39,6 +44,7 @@ module.exports = {
     allWords: wordList,
     generateSecretMap: generateSecretMap,
     generateWord: generateGuess,
+    generateGuessReverse: generateGuessReverse,
     wordIdMap: wordIdMap,
     deleteHistory: deleteHistory
 };
