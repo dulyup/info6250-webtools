@@ -33,7 +33,7 @@ app.post('/game', (req, res) => {
 app.put('/game/:secretId/guessed', (req, res) => {
     const secretId = req.body.id;
     const previousResult = req.body.common;
-    const guessWord = wordService.generateWord();
+    const guessWord = wordService.generateGuessReverse();
     if (!guessWord){
         res.status(400).send('fail to get a guess word');
     } else {
