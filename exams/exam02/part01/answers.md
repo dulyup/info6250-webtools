@@ -12,25 +12,25 @@ const data = fetch('example.com/test')
 console.log(data.cats);
 ```
 ### Answer:
-data in console.log() is a promise. 
-response.json() is  an object.
+data is a promise. 
+There's no return value in json =>{return data}
 
 There're some ways to modify:
 1. change .then(json => {return data}) to .then(json => console.log(json.cats)); 
+```js
+fetch('example.com/test')
+    .then(response => response.ok ? response.json() : Promise.reject(response.text()))
+    .then(res => console.log(res.cats))
+    .catch( e => console.log("Oops, error", e) );
+``` 
+2. Or we can remove .then(json => json), and data may be undefined because of asynchronization if we console directly. 
+So we can do like this: 
 ```js
 const data = fetch('example.com/test')
     .then(response => response.ok ? response.json() : Promise.reject(response.text()))
     .catch( e => console.log("Oops, error", e) );
 
 data.then(res => console.log(res.cats));
-``` 
-2. Or we can remove .then(json => json), and data may be undefined because of asynchronization if we console directly. 
-So we can do like this: 
-```js
-fetch('example.com/test')
-    .then(response => response.ok ? response.json() : Promise.reject(response.text()))
-    .then(res => console.log(res.cats))
-    .catch( e => console.log("Oops, error", e) );
 ``` 
  
 
