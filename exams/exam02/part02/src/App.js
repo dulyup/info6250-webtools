@@ -62,7 +62,7 @@ class App extends Component {
     }
 
     async handleSecretWord(server) {
-        return await getSecret(server).catch((e) => this.handleError(e));
+        return await getSecret(server);
     }
 
     async handleGuess(fromServer, toServer, fromId, toId, common) {
@@ -178,7 +178,8 @@ class App extends Component {
 
     clearError() {
         this.setState({
-            error: null
+            error: null,
+            isValid: true
         });
     }
 
@@ -187,8 +188,8 @@ class App extends Component {
         if( message ) {
             message = (
                 <div>
-                    {<p>{message}</p>}
-                    {<button onClick={ () => this.clearError() }>Got it</button>}
+                    <p>{message}</p>
+                    <button onClick={ () => this.clearError() }>Got it</button>
                 </div>
             );
         }
@@ -196,7 +197,6 @@ class App extends Component {
         return (
             <div className="app">
                 <GameHeader title="Welcome to Guess Word Game"/>
-
                 <GameControl
                     mode={this.state.mode}
                     onCount={this.checkButton}
@@ -206,8 +206,8 @@ class App extends Component {
                     aSecretForB={this.state.aSecretForB}
                     bSecretForA={this.state.bSecretForA}
                 />
-                    <GameBodyA aResultList={this.state.aResultList}/>
-                    <GameBodyB bResultList={this.state.bResultList}/>
+                <GameBodyA aResultList={this.state.aResultList}/>
+                <GameBodyB bResultList={this.state.bResultList}/>
                 { message }
             </div>
         );
