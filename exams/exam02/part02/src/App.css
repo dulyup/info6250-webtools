@@ -1,0 +1,62 @@
+.app {
+  text-align: center;
+}
+
+.game-header {
+  background-color: #222;
+  height: 15px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  font-size: large;
+}
+
+.a-input, .b-input {
+  display: inline-block;
+  margin-left: 130px;
+  margin-right: 130px;
+}
+
+.a-list, .b-list {
+  display: inline-block;
+  text-align: left;
+}
+
+.a-list {
+  margin-left: 100px;
+  margin-right: 50px;
+}
+
+.b-list {
+  margin-left: 50px;
+  margin-right: 100px;
+}
+
+ul {
+  list-style-type: none;
+  background-color: #b7e8ed;
+  padding-right: 20px;
+}
+
+.game-button {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: ghostwhite;
+  width: 70px;
+}
+
+.game-button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.result {
+  margin-top: 10px;
+}
+
+.result-win {
+  /*margin: 0;*/
+  color: #e90000;
+}
