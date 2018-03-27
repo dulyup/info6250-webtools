@@ -24,6 +24,6 @@ yarn-error.log*
 .idea
 
 # React
-.ico
+favicon.ico
 App.test.js
-.svg
+logo.svg
