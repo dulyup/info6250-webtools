@@ -18,7 +18,6 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modes: ['START','RESET'],
             mode: 'START',
             turn: 0,
             error: null,
@@ -108,7 +107,7 @@ class App extends Component {
     handleAWon() {
         if (this.state.aWon) {
             this.setState({
-                mode: this.state.modes[1],
+                mode: '',
                 result: 'Alfred Win!',
                 isValid: true
             });
@@ -121,11 +120,11 @@ class App extends Component {
     handleBWon() {
         if (this.state.bWon) {
             this.setState({
-                mode: this.state.modes[1],
+                mode: '',
                 result: 'Barbara Win!',
                 isValid: true
             });
-            this.handleButton('RESET');
+            this.handleButton('NEW GAME');
             this.clearGameHistory();
         }
 
@@ -153,7 +152,6 @@ class App extends Component {
 
     resetGame() {
         this.setState( {
-            modes: ['START','RESET'],
             mode: 'START',
             turn: 0,
             error: null,
