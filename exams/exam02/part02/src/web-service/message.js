@@ -10,8 +10,6 @@ export const pickErrorMessage = code => {
     if(!code) {
         return '';
     }
-    console.log(code);
-    console.log(messages[code]);
     code = messages[code] ? code : 'generic-error';
     return messages[code];
 };
