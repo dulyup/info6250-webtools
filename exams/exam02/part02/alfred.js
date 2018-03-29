@@ -4,7 +4,6 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 const wordService = require('./wordService');
-const matchService = require('./matchService');
 
 app.use( express.static('public') );
 app.use( bodyParser.json({ extended: true, type: '*/*' }) );
@@ -31,14 +30,15 @@ app.post('/game', (req, res) => {
 });
 
 app.put('/game/:secretId/guessed', (req, res) => {
-    const secretId = req.body.id;
-    const previousResult = req.body.common;
-    const guessWord = wordService.generateWord();
+    const id = req.body.id;
+    const preCommon = req.body.common;
+    const preGuess = req.body.preGuess;
+    const guessWord = wordService.generateWord(id, preGuess, preCommon);
     if (!guessWord){
         res.status(400).send('fail to get a guess word');
     } else {
         const guess = {
-            secretId: secretId,
+            secretId: id,
             guessWord: guessWord
         };
         res.send( JSON.stringify( guess ));
@@ -49,8 +49,8 @@ app.get('/game/:secretId/guess/:guess', (req, res) => {
     const secretId = req.params.secretId;
     const guess = req.params.guess;
     const result = {
-        common: matchService.countCommon(guess, secretId),
-        won: matchService.won(guess, secretId)
+        common: wordService.countCommon(guess, secretId),
+        won: wordService.won(guess, secretId)
     };
     if (result.common === null || result.won === null) {
         res.status(400).send('id or guess word is not valid');
@@ -61,7 +61,7 @@ app.get('/game/:secretId/guess/:guess', (req, res) => {
 
 app.delete('/game/:secretId', (req, res) => {
     const secretId = req.params.secretId;
-    if (!matchService.checkId(secretId)){
+    if (!wordService.checkId(secretId)){
         res.status(400).send('id is not valid');
     } else {
         wordService.deleteHistory(secretId);

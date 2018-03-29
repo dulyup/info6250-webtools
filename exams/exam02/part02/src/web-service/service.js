@@ -8,7 +8,7 @@ export const getSecret = (server) => {
        .catch( () => Promise.reject('get-secret-word-fail') );
 };
 
-export const getGuess = (server, secretId, common) => {
+export const getGuess = (server, secretId, common, preGuess) => {
     let url = `${server}/game/${secretId}/guessed`;
     return fetch(url, {
         method: 'PUT',
@@ -17,7 +17,7 @@ export const getGuess = (server, secretId, common) => {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify( { common: common, id: secretId } )
+        body: JSON.stringify( { preGuess: preGuess, common: common, id: secretId } )
     })
         .then(response => response.ok ? response.json() : Promise.reject(response.text()) )
         .catch( () => Promise.reject('get-guess-fail') );

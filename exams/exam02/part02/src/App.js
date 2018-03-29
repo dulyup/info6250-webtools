@@ -51,8 +51,8 @@ class App extends Component {
                 bSecretForA: secretB["word"]
             });
             while (!this.state.aWon && !this.state.bWon) {
-                await this.handleGuess(config['alfred'], config['barbara'], this.state.aId, this.state.bId, this.state.aCommon);
-                await this.handleGuess(config['barbara'], config['alfred'], this.state.bId, this.state.aId, this.state.bCommon);
+                await this.handleGuess(config['alfred'], config['barbara'], this.state.aId, this.state.bId, this.state.aCommon, this.state.aGuess);
+                await this.handleGuess(config['barbara'], config['alfred'], this.state.bId, this.state.aId, this.state.bCommon, this.state.bGuess);
                 this.handleResult();
                 this.countTurn();
             }
@@ -65,9 +65,9 @@ class App extends Component {
         return await getSecret(server);
     }
 
-    async handleGuess(fromServer, toServer, fromId, toId, common) {
+    async handleGuess(fromServer, toServer, fromId, toId, common, preGuess) {
         try {
-            let guess = await getGuess(fromServer, fromId, common);
+            let guess = await getGuess(fromServer, fromId, common, preGuess);
             this.setState(fromServer === config['alfred'] ? {aGuess: guess.guessWord} : {bGuess: guess.guessWord});
             let result = await checkResult(toServer, guess.guessWord, toId);
             this.setState(fromServer === config['alfred'] ? {
