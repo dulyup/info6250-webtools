@@ -17,8 +17,8 @@
 
 .a-input, .b-input {
   display: inline-block;
-  margin-left: 180px;
-  margin-right: 180px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 
 .a-list, .b-list {
@@ -39,7 +39,7 @@
 ul {
   list-style-type: none;
   background-color: #dbf3ff;
-  padding-right: 20px;
+  padding-right: 35px;
 }
 
 .game-button {
