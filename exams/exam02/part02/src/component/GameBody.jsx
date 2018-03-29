@@ -2,15 +2,26 @@ import React from 'react';
 
 const GameBody = ({resultList, userName}) => {
 
-    const result = resultList.map( ({guess, commonLetters}, index) => {
-        return (<li key={index}>{userName} guessed {guess}, hit {commonLetters} right letters.</li>)
+    const resultL = resultList.map( ({guess}, index) => {
+        return (<li key={index}>{userName}: {guess}</li>)
+    });
+
+    const resultR = resultList.map( ({commonLetters}, index) => {
+        return (<li key={index}> Hit {commonLetters} letters</li>)
     });
 
     return (
         <div>
-            <ul>
-                {result}
-            </ul>
+            <div className={'l-body'}>
+                <ul >
+                    {resultL}
+                </ul>
+            </div>
+            <div className={'r-body'}>
+                <ul>
+                    {resultR}
+                </ul>
+            </div>
         </div>
     );
 };
