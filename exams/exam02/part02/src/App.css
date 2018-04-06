@@ -1,0 +1,69 @@
+.app {
+  text-align: center;
+}
+
+.game-header {
+  background-color: #222;
+  height: 15px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  font-size: large;
+}
+
+.l-body, .r-body{
+  display: inline-block;
+}
+
+.a-input, .b-input {
+  display: inline-block;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.a-list, .b-list {
+  display: inline-block;
+  text-align: left;
+}
+
+.a-list {
+  margin-left: 100px;
+  margin-right: 50px;
+}
+
+.b-list {
+  margin-left: 50px;
+  margin-right: 100px;
+}
+
+ul {
+  list-style-type: none;
+  background-color: #dbf3ff;
+  padding-right: 35px;
+}
+
+.game-button {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: ghostwhite;
+  width: 100px;
+}
+
+.game-button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.result {
+  margin-top: 10px;
+}
+
+.result-win {
+  height: 10px;
+  color: indianred;
+  font-weight: bold;
+}
+
+
