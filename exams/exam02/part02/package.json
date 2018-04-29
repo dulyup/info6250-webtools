@@ -9,6 +9,8 @@
     "react-scripts": "1.1.1"
   },
   "scripts": {
+    "alfred": "node alfred.js",
+    "barbara": "node barbara.js",
     "start": "react-scripts start",
     "alfred": "node alfred.js",
     "barbara": "node barbara.js",

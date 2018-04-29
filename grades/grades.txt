@@ -40,7 +40,77 @@ code-runs: A
 code-works: A
 follows-directions: A
 pr-correct: A
-html-practices: A, -1
+html-practices: A
 css-practices: A
 js-practices: A
+task-grade: A
+
+task: work/React-102
+code-runs: A
+code-works: A
+follows-directions: A
+pr-correct: A, -1
+html-practices: A
+css-practices: A
+js-practices: A
+react-practices: A
 task-grade: A-
+
+task: exams/exam02/part01
+answer-correctness: A
+follows-directions: A
+pr-correct: A
+task-grade: A
+
+task: exams/exam02/part02
+code-runs: A, -1
+code-works: A
+follows-directions: A
+pr-correct: A
+html-practices: A
+css-practices: A
+js-practices: A
+react-practices: A
+task-grade: A-
+
+task: exams/exam03
+formatted-code: 0
+pr-correct: 0
+question1: 3
+question2: 3
+question3: 3
+question4: 3
+quesiton5: 3
+question6: 3
+constructor.js: 2
+es6class.js: 3
+basis.js: 3
+brute.js: 2
+chain.js: 3
+task-grade: 93.9
+
+task: final-project
+code-runs: A
+code-works: A
+follows-directions: A, -1
+pr-correct: A
+html-practice: A
+css-practice: A
+js-practice: A
+react-practice: A
+task-grade: A-
+
+task: team-project
+teacher-bonus: A, +3
+code-runs: A
+code-works: A
+follows-directions: A
+pr-correct: A
+html-practices: A 
+css-practices: A, -1
+js-practices: A, -1
+server-practices: A
+react-practices: B
+task-grade: B+
+
+final-class-grade: 95.725
